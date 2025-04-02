@@ -4,10 +4,136 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Memora Photobooth</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Open+Sans&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #111;
+      color: #fff;
+      min-height: 100vh;
+    }
+    
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+    
+    .left {
+      flex: 1;
+      padding: 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .tagline {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 1rem;
+      color: #f06;
+    }
+    
+    .title {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      line-height: 1.1;
+    }
+    
+    .description {
+      margin-bottom: 2rem;
+      line-height: 1.6;
+      font-size: 1.1rem;
+      max-width: 90%;
+      color: #ccc;
+    }
+    
+    .icons {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .icon {
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+    
+    .icon:hover {
+      transform: scale(1.1);
+    }
+    
+    .icon img {
+      width: 30px;
+      height: 30px;
+    }
+    
+    .image-placeholder {
+      width: 80%;
+      height: 70%;
+      background: linear-gradient(135deg, #f06, #09f);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .image-placeholder::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: url('/api/placeholder/600/400');
+      background-size: cover;
+      opacity: 0.7;
+      mix-blend-mode: soft-light;
+    }
+    
+    .image-placeholder::after {
+      content: "Capture your moments";
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      position: absolute;
+      text-align: center;
+      padding: 1rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      
+      .left {
+        padding: 2rem;
+      }
+      
+      .title {
+        font-size: 3rem;
+      }
+      
+      .right {
+        min-height: 50vh;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -15,15 +141,15 @@
       <p class="tagline">capture memories</p>
       <h1 class="title">memora<br />Photobooth</h1>
       <p class="description">
-        Memora booth offers vibrant, high-quality photobooths for events, rentals, and business use. Whether you're throwing a party, need a booth for your space, or want a custom setup for your brand—we’ve got you covered. Fun, flexible, and made to impress!
+        Memora booth offers vibrant, high-quality photobooths for events, rentals, and business use. Whether you're throwing a party, need a booth for your space, or want a custom setup for your brand—we've got you covered. Fun, flexible, and made to impress!
       </p>
       <div class="icons">
-        <a href="https://instagram.com" target="_blank" class="icon"><img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram" /></a>
-        <a href="mailto:hello@memora.com" class="icon"><img src="https://img.icons8.com/ios-filled/50/ffffff/email.png" alt="Email" /></a>
+        <a href="#" target="_blank" class="icon"><img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram" /></a>
+        <a href="#" class="icon"><img src="https://img.icons8.com/ios-filled/50/ffffff/email.png" alt="Email" /></a>
       </div>
     </div>
     <div class="right">
-      <div class="image-placeholder">Empty</div>
+      <div class="image-placeholder"></div>
     </div>
   </div>
 </body>
