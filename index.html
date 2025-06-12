@@ -129,6 +129,7 @@
     .icons {
       display: flex;
       gap: 1rem;
+      margin-bottom: 2rem;
     }
     
     .icon {
@@ -150,6 +151,65 @@
       width: 24px;
       height: 24px;
       filter: invert(1);
+    }
+
+    .contact-info {
+      background-color: rgba(125, 132, 120, 0.1);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+    }
+
+    .contact-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: #5b6356;
+      margin-bottom: 1rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      color: #555;
+    }
+
+    .contact-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-item svg {
+      width: 18px;
+      height: 18px;
+      margin-right: 0.8rem;
+      fill: #7d8478;
+    }
+
+    .contact-item a {
+      color: #555;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-item a:hover {
+      color: #5b6356;
+    }
+    
+    .footer-links {
+      margin-top: 2rem;
+    }
+
+    .footer-links a {
+      color: #7d8478;
+      text-decoration: none;
+      margin-right: 1.5rem;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #5b6356;
+      text-decoration: underline;
     }
     
     .image-placeholder {
@@ -177,6 +237,77 @@
       width: 100%;
     }
 
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+      background-color: #f2f1ec;
+      margin: 5% auto;
+      padding: 2rem;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 800px;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #5b6356;
+    }
+
+    .modal h2 {
+      font-family: 'Playfair Display', serif;
+      color: #5b6356;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+    }
+
+    .modal h3 {
+      font-family: 'Playfair Display', serif;
+      color: #5b6356;
+      margin: 1.5rem 0 1rem 0;
+      font-size: 1.3rem;
+    }
+
+    .modal p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      color: #555;
+    }
+
+    .modal ul {
+      margin: 1rem 0;
+      padding-left: 2rem;
+    }
+
+    .modal li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+      color: #555;
+    }
+
     @media (max-width: 768px) {
       .container {
         flex-direction: column;
@@ -199,6 +330,23 @@
       .price-options {
         flex-direction: column;
         gap: 1rem;
+      }
+
+      .footer-links a {
+        display: block;
+        margin-bottom: 0.5rem;
+        margin-right: 0;
+      }
+
+      .modal-content {
+        margin: 10% auto;
+        padding: 1.5rem;
+        width: 95%;
+      }
+
+      .modal h2 {
+        font-size: 1.5rem;
+        margin-right: 2rem;
       }
     }
   </style>
@@ -230,9 +378,31 @@
           </div>
         </div>
       </div>
+
+      <div class="contact-info">
+        <h3 class="contact-title">Contact Us</h3>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          <a href="tel:+919876543210">+91 7550154640</a>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+          <a href="mailto:admin@memorabooth.com">admin@memorabooth.com</a>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+          <span>Chennai, Tamil Nadu</span>
+        </div>
+      </div>
       
       <div class="icons">
-        <a href="https://instagram.com/memoraboothchennai" target="_blank" class="icon">
+        <a href="https://instagram.com/memoraboothchenai" target="_blank" class="icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
           </svg>
@@ -243,6 +413,12 @@
           </svg>
         </a>
       </div>
+
+      <div class="footer-links">
+        <a href="#" onclick="openModal('termsModal')">Terms & Conditions</a>
+        <a href="#" onclick="openModal('privacyModal')">Privacy Policy</a>
+        <a href="#" onclick="openModal('refundsModal')">Refunds & Cancellations</a>
+      </div>
     </div>
     <div class="right">
       <div class="image-placeholder">
@@ -251,5 +427,199 @@
     </div>
   </div>
   <div class="footer"></div>
+
+  <!-- Terms & Conditions Modal -->
+  <div id="termsModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('termsModal')">&times;</span>
+      <h2>Terms & Conditions</h2>
+      
+      <h3>1. Service Agreement</h3>
+      <p>By booking Memora Photobooth services, you agree to these terms and conditions. Our photobooth rental service provides high-quality photo experiences for events, parties, and business use.</p>
+      
+      <h3>2. Booking and Payment</h3>
+      <ul>
+        <li>Bookings are confirmed upon receipt of payment</li>
+        <li>Payment can be made via cash, UPI, or bank transfer</li>
+        <li>Pricing is as displayed on our website and may vary based on location and event requirements</li>
+      </ul>
+      
+      <h3>3. Service Delivery</h3>
+      <ul>
+        <li>We provide high-quality photobooth equipment and professional setup</li>
+        <li>Service includes the specified number of photo strips as per your chosen package</li>
+        <li>We arrive 30 minutes before your event for setup and testing</li>
+        <li>Our team ensures smooth operation throughout your event</li>
+      </ul>
+      
+      <h3>4. Client Responsibilities</h3>
+      <ul>
+        <li>Provide adequate space and power supply for photobooth setup</li>
+        <li>Ensure safe handling of equipment by guests</li>
+        <li>Notify us of any special requirements or venue restrictions</li>
+      </ul>
+      
+      <h3>5. Liability</h3>
+      <p>Memora Photobooth is not liable for any damages to personal property or injuries during the event. Clients are responsible for guest behavior around equipment.</p>
+      
+      <h3>6. Equipment</h3>
+      <p>All equipment remains the property of Memora Photobooth. Any damage to equipment will be charged to the client at replacement cost.</p>
+      
+      <h3>7. Force Majeure</h3>
+      <p>We are not liable for delays or cancellations due to circumstances beyond our control, including weather, natural disasters, or government restrictions.</p>
+    </div>
+  </div>
+
+  <!-- Privacy Policy Modal -->
+  <div id="privacyModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('privacyModal')">&times;</span>
+      <h2>Privacy Policy</h2>
+      
+      <h3>Complete Security for Users</h3>
+      <p>At Memora Photobooth, we prioritize your privacy and data security above all else. We are committed to providing a completely secure experience for all our users.</p>
+      
+      <h3>No Data Storage Policy</h3>
+      <p><strong>We do not store any personal data on our systems.</strong> This includes:</p>
+      <ul>
+        <li>Photos taken during your event</li>
+        <li>Personal information shared during booking</li>
+        <li>Contact details beyond what's necessary for service delivery</li>
+        <li>Payment information (processed securely through third-party providers)</li>
+      </ul>
+      
+      <h3>Photo Privacy</h3>
+      <ul>
+        <li>All photos are printed instantly and given directly to you</li>
+        <li>No digital copies are retained on our equipment</li>
+        <li>Photos are not uploaded to any cloud services or online platforms</li>
+        <li>You have full ownership and control of all images taken</li>
+      </ul>
+      
+      <h3>Information Collection</h3>
+      <p>We only collect minimal information necessary to provide our services:</p>
+      <ul>
+        <li>Contact information for booking confirmation</li>
+        <li>Event details for service delivery</li>
+        <li>Payment information (processed securely and not stored)</li>
+      </ul>
+      
+      <h3>Data Security</h3>
+      <ul>
+        <li>All equipment is reset after each event</li>
+        <li>No permanent storage devices retain any customer data</li>
+        <li>Communication is handled through secure channels</li>
+        <li>We follow industry best practices for data protection</li>
+      </ul>
+      
+      <h3>Third-Party Services</h3>
+      <p>We may use third-party payment processors for transactions. These services have their own privacy policies and security measures. We do not share any additional personal information with third parties.</p>
+      
+      <h3>Contact</h3>
+      <p>If you have any questions about our privacy practices, please contact us at admin@memorabooth.com or +91 7550154640.</p>
+    </div>
+  </div>
+
+  <!-- Refunds & Cancellations Modal -->
+  <div id="refundsModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('refundsModal')">&times;</span>
+      <h2>Refunds & Cancellations</h2>
+      
+      <h3>Same Day Refunds Available</h3>
+      <p>We understand that plans can change. That's why we offer <strong>same day refunds</strong> for all eligible cancellations, ensuring you get your money back quickly and hassle-free.</p>
+      
+      <h3>Cancellation Policy</h3>
+      <ul>
+        <li><strong>24+ hours before event:</strong> Full refund processed the same day</li>
+        <li><strong>12-24 hours before event:</strong> 80% refund processed the same day</li>
+        <li><strong>6-12 hours before event:</strong> 50% refund processed the same day</li>
+        <li><strong>Less than 6 hours:</strong> 25% refund (service preparation costs)</li>
+      </ul>
+      
+      <h3>Refund Process</h3>
+      <p>Our streamlined refund process ensures quick processing:</p>
+      <ul>
+        <li>Contact us via phone (+91 7550154640) or email (admin@memorabooth.com)</li>
+        <li>Provide your booking reference and reason for cancellation</li>
+        <li>Refund is processed immediately during business hours</li>
+        <li>Money is returned via the same payment method used for booking</li>
+      </ul>
+      
+      <h3>Emergency Cancellations</h3>
+      <p>In case of emergencies, medical situations, or force majeure events:</p>
+      <ul>
+        <li>Full refund regardless of timing</li>
+        <li>Documentation may be required for verification</li>
+        <li>Processed within 24 hours of receiving proper documentation</li>
+      </ul>
+      
+      <h3>Weather Cancellations</h3>
+      <ul>
+        <li>Outdoor events cancelled due to severe weather receive full refunds</li>
+        <li>Alternative date booking available at no extra cost</li>
+        <li>Indoor events are not affected by weather conditions</li>
+      </ul>
+      
+      <h3>Service Issues</h3>
+      <p>If we're unable to provide the service as promised:</p>
+      <ul>
+        <li>Full refund plus compensation for inconvenience</li>
+        <li>Immediate processing of refund</li>
+        <li>Priority booking for future events</li>
+      </ul>
+      
+      <h3>Refund Timeline</h3>
+      <ul>
+        <li><strong>UPI/Digital Payments:</strong> Instant to 2 hours</li>
+        <li><strong>Bank Transfer:</strong> Same day (within business hours)</li>
+        <li><strong>Cash Payments:</strong> Immediate cash refund or instant UPI transfer</li>
+      </ul>
+      
+      <h3>Contact for Cancellations</h3>
+      <p>For all cancellation requests:</p>
+      <ul>
+        <li><strong>Phone:</strong> +91 7550154640 (fastest response)</li>
+        <li><strong>Email:</strong> admin@memorabooth.com</li>
+        <li><strong>Business Hours:</strong> 9 AM - 9 PM (7 days a week)</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+      const modals = document.querySelectorAll('.modal');
+      modals.forEach(modal => {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }
+      });
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(modal => {
+          if (modal.style.display === 'block') {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
