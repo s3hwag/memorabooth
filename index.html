@@ -212,21 +212,51 @@
       text-decoration: underline;
     }
     
-    .image-placeholder {
-      width: 95%;
-      height: 54%;
-      background-color: #e9e9e6;
-      border: 1px #aaa;
+    .image-carousel {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #aaa;
     }
-    
-    .image-placeholder img {
+
+    .image-carousel img {
       max-width: 100%;
-      max-height: 100%;
-      object-fit: cover;
+      max-height: 600px;
+      object-fit: contain;
+    }
+
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(125, 132, 120, 0.8);
+      color: white;
+      border: none;
+      padding: 15px 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .carousel-arrow:hover {
+      background-color: rgba(91, 99, 86, 0.9);
+    }
+
+    .carousel-arrow.left {
+      left: 0;
+    }
+
+    .carousel-arrow.right {
+      right: 0;
+    }
+
+    .carousel-arrow svg {
+      width: 30px;
+      height: 30px;
+      fill: white;
     }
     
     .footer {
@@ -365,15 +395,15 @@
         <h2 class="pricing-title">Pricing</h2>
         <div class="price-options">
           <div class="price-option">
-            <div class="price-amount">₹199</div>
+            <div class="price-amount" id="price1">₹199</div>
             <div class="price-description">2 Photo Strips</div>
           </div>
           <div class="price-option">
-            <div class="price-amount">₹349</div>
+            <div class="price-amount" id="price2">₹349</div>
             <div class="price-description">4 Photo Strips</div>
           </div>
           <div class="price-option">
-            <div class="price-amount">₹499</div>
+            <div class="price-amount" id="price3">₹499</div>
             <div class="price-description">6 Photo Strips</div>
           </div>
         </div>
@@ -421,8 +451,18 @@
       </div>
     </div>
     <div class="right">
-      <div class="image-placeholder">
-        <img src="assets/1.png" alt="Memora Photobooth">
+      <div class="image-carousel">
+        <button class="carousel-arrow left" onclick="previousImage()">
+          <svg viewBox="0 0 24 24">
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+          </svg>
+        </button>
+        <img id="carouselImage" src="assets/1.png" alt="Memora Photobooth">
+        <button class="carousel-arrow right" onclick="nextImage()">
+          <svg viewBox="0 0 24 24">
+            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+          </svg>
+        </button>
       </div>
     </div>
   </div>
@@ -575,6 +615,35 @@
   </div>
 
   <script>
+    // Image carousel functionality
+    const images = ['assets/1.png', 'assets/2.png'];
+    let currentImageIndex = 0;
+
+    // Pricing for each image
+    const pricing = {
+      0: { price1: '₹199', price2: '₹349', price3: '₹499' },
+      1: { price1: '₹249', price2: '₹449', price3: '₹599' }
+    };
+
+    function updatePricing() {
+      document.getElementById('price1').textContent = pricing[currentImageIndex].price1;
+      document.getElementById('price2').textContent = pricing[currentImageIndex].price2;
+      document.getElementById('price3').textContent = pricing[currentImageIndex].price3;
+    }
+
+    function nextImage() {
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      document.getElementById('carouselImage').src = images[currentImageIndex];
+      updatePricing();
+    }
+
+    function previousImage() {
+      currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+      document.getElementById('carouselImage').src = images[currentImageIndex];
+      updatePricing();
+    }
+
+    // Modal functionality
     function openModal(modalId) {
       document.getElementById(modalId).style.display = 'block';
       document.body.style.overflow = 'hidden';
