@@ -17,9 +17,15 @@ from email.mime.multipart import MIMEMultipart
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
-# MongoDB connection
+# MongoDB connection with SSL configuration
 mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
+client = AsyncIOMotorClient(
+    mongo_url,
+    tls=True,
+    tlsAllowInvalidCertificates=True,
+    serverSelectionTimeoutMS=5000,
+    connectTimeoutMS=10000
+)
 db = client[os.environ['DB_NAME']]
 
 # Create the main app without a prefix
