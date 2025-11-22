@@ -366,28 +366,14 @@ function App() {
               </p>
             </div>
 
-            {/* Vanilla Image Slider */}
+            {/* Vanilla Coming Soon */}
             <div className="mb-12">
-              <div className="relative overflow-hidden rounded-3xl shadow-2xl">
-                <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                  {[
-                    "https://images.unsplash.com/photo-1698235301688-6b5b79dac3d5?crop=entropy&cs=srgb&fm=jpg&q=85",
-                    "https://images.unsplash.com/photo-1627580158782-ecd7b8a16326?crop=entropy&cs=srgb&fm=jpg&q=85",
-                    "https://images.pexels.com/photos/3271951/pexels-photo-3271951.jpeg",
-                    "https://images.unsplash.com/photo-1686853021307-e9e5b01cb85e?crop=entropy&cs=srgb&fm=jpg&q=85",
-                    "https://images.pexels.com/photos/28588977/pexels-photo-28588977.jpeg"
-                  ].map((img, idx) => (
-                    <div key={idx} className="flex-shrink-0 w-full snap-center aspect-video">
-                      <img 
-                        src={img} 
-                        alt={`Vanilla Photobooth ${idx + 1}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  ))}
+              <div className="relative overflow-hidden rounded-3xl shadow-2xl bg-gradient-to-br from-purple-100 via-pink-100 to-blue-100 aspect-video flex items-center justify-center">
+                <div className="text-center p-12">
+                  <h3 className="font-display text-5xl md:text-6xl font-bold text-gray-900 mb-4">Coming Soon</h3>
+                  <p className="text-xl text-gray-600">Exclusive Vanilla Photobooth images will be available shortly</p>
                 </div>
               </div>
-              <p className="text-center text-gray-600 mt-4 text-sm">← Swipe to see more →</p>
             </div>
 
             {/* Vanilla Ideal For */}
@@ -598,7 +584,8 @@ function App() {
               "https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/k1gromee_IMG_2554%202.jpg",
               "https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/zsm8m3vj_IMG_2549%202.jpg",
               "https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/kl7c5pfb_IMG_2551%202.jpg",
-              "https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/pq8ci1je_IMG_2552%202.jpg"
+              "https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/pq8ci1je_IMG_2552%202.jpg",
+              "https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/jhtzaz8o_IMG_0243.jpg"
             ].map((img, idx) => (
               <div key={idx} className="aspect-square overflow-hidden rounded-2xl group cursor-pointer" data-testid={`gallery-img-${idx}`}>
                 <img 
@@ -644,21 +631,6 @@ function App() {
             </div>
           </div>
 
-          {/* Our Brand Activation Clients */}
-          <div className="mb-16">
-            <h3 className="font-display text-3xl font-bold text-gray-900 mb-8 text-center">Our Brand Activation Clients</h3>
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-12 shadow-xl">
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((idx) => (
-                  <div key={idx} className="text-center" data-testid={`client-${idx}`}>
-                    <div className="bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl p-6 h-24 flex items-center justify-center hover:shadow-lg transition-shadow">
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
           {/* Brand Activation Testimonials */}
           <div className="mb-12">
             <h3 className="font-display text-3xl font-bold text-gray-900 mb-8 text-center">What Brands Say</h3>
@@ -684,7 +656,7 @@ function App() {
                   </p>
                   <div className="border-t pt-4">
                     <p className="font-bold text-gray-900">Rajesh Kumar</p>
-                    <p className="text-sm text-gray-600">Event Manager, Fortune 500 Company</p>
+                    <p className="text-sm text-gray-600">Event Manager, Management Company</p>
                   </div>
                 </CardContent>
               </Card>
