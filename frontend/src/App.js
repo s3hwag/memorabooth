@@ -270,7 +270,7 @@ function App() {
               
               {/* Brownie Photobooth */}
               <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 border-none" data-testid="brownie-booth-card">
-                <div className="relative h-80 overflow-hidden">
+                <div className="relative h-96 overflow-hidden">
                   <img 
                     src="https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/aaeu6ab1_Brownie.PNG" 
                     alt="Brownie Photobooth"
@@ -313,7 +313,7 @@ function App() {
 
               {/* Butterscotch Photobooth */}
               <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 border-none" data-testid="butterscotch-booth-card">
-                <div className="relative h-80 overflow-hidden">
+                <div className="relative h-96 overflow-hidden">
                   <img 
                     src="https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/9x1q1t37_Butterscotch.PNG" 
                     alt="Butterscotch Photobooth"
