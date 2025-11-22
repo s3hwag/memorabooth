@@ -269,7 +269,7 @@ function App() {
               <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 border-none" data-testid="brownie-booth-card">
                 <div className="relative h-80 overflow-hidden">
                   <img 
-                    src="https://images.pexels.com/photos/34800136/pexels-photo-34800136.jpeg" 
+                    src="https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/aaeu6ab1_Brownie.PNG" 
                     alt="Brownie Photobooth"
                     className="w-full h-full object-cover"
                   />
@@ -312,7 +312,7 @@ function App() {
               <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 border-none" data-testid="butterscotch-booth-card">
                 <div className="relative h-80 overflow-hidden">
                   <img 
-                    src="https://images.pexels.com/photos/19568105/pexels-photo-19568105.jpeg" 
+                    src="https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/9x1q1t37_Butterscotch.PNG" 
                     alt="Butterscotch Photobooth"
                     className="w-full h-full object-cover"
                   />
