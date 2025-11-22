@@ -592,14 +592,10 @@ function App() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {[
-              "https://images.unsplash.com/photo-1558707538-c56435bdcdf3?crop=entropy&cs=srgb&fm=jpg&q=85",
-              "https://images.unsplash.com/photo-1686853021307-e9e5b01cb85e?crop=entropy&cs=srgb&fm=jpg&q=85",
-              "https://images.unsplash.com/photo-1627580158782-ecd7b8a16326?crop=entropy&cs=srgb&fm=jpg&q=85",
-              "https://images.pexels.com/photos/3271951/pexels-photo-3271951.jpeg",
-              "https://images.unsplash.com/photo-1698235301688-6b5b79dac3d5?crop=entropy&cs=srgb&fm=jpg&q=85",
-              "https://images.pexels.com/photos/28588977/pexels-photo-28588977.jpeg",
-              "https://images.pexels.com/photos/13788485/pexels-photo-13788485.jpeg",
-              "https://images.unsplash.com/photo-1574770291411-a7ca092d0052?crop=entropy&cs=srgb&fm=jpg&q=85"
+              "https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/sj2xxxst_IMG_2543%202.jpg",
+              "https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/g6ez0wmu_IMG_2544%202.jpg",
+              "https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/cue8wou9_IMG_2553%202.jpg",
+              "https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/k1gromee_IMG_2554%202.jpg"
             ].map((img, idx) => (
               <div key={idx} className="aspect-square overflow-hidden rounded-2xl group cursor-pointer" data-testid={`gallery-img-${idx}`}>
                 <img 
