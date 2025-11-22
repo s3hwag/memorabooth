@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { MapPin, Clock, Camera, Sparkles, Users, Heart, Award, Mail, Phone, Instagram, Facebook } from "lucide-react";
+import { MapPin, Clock, Camera, Sparkles, Users, Heart, Award, Mail, Phone, Instagram } from "lucide-react";
 import axios from "axios";
 import { toast, Toaster } from "sonner";
 
@@ -647,21 +647,9 @@ function App() {
             <h3 className="font-display text-3xl font-bold text-gray-900 mb-8 text-center">Our Brand Activation Clients</h3>
             <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-12 shadow-xl">
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
-                {[
-                  'TechVista Inc.',
-                  'Zara Fashion',
-                  'Flipkart',
-                  'Swiggy',
-                  'Ola Cabs',
-                  'BMW India',
-                  'Samsung',
-                  'Coca-Cola',
-                  'Amazon',
-                  'Google India'
-                ].map((client, idx) => (
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((idx) => (
                   <div key={idx} className="text-center" data-testid={`client-${idx}`}>
                     <div className="bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl p-6 h-24 flex items-center justify-center hover:shadow-lg transition-shadow">
-                      <p className="font-bold text-gray-800 text-sm md:text-base">{client}</p>
                     </div>
                   </div>
                 ))}
@@ -772,13 +760,13 @@ function App() {
               </div>
 
               <div className="bg-gradient-to-br from-pink-50 to-purple-50 p-8 rounded-2xl">
-                <h4 className="font-display text-2xl font-bold text-gray-900 mb-4">Follow Us</h4>
+                <h4 className="font-display text-2xl font-bold text-gray-900 mb-4">Connect With Us</h4>
                 <div className="flex gap-4">
                   <a href="https://instagram.com/memoraboothchennai" target="_blank" rel="noopener noreferrer" className="bg-white p-4 rounded-full hover:scale-110 transition-transform shadow-md">
                     <Instagram className="w-6 h-6 text-pink-600" />
                   </a>
-                  <a href="#" className="bg-white p-4 rounded-full hover:scale-110 transition-transform shadow-md">
-                    <Facebook className="w-6 h-6 text-blue-600" />
+                  <a href="mailto:admin@memorabooth.com" className="bg-white p-4 rounded-full hover:scale-110 transition-transform shadow-md">
+                    <Mail className="w-6 h-6 text-purple-600" />
                   </a>
                 </div>
               </div>
