@@ -236,8 +236,8 @@ function App() {
             <div className="relative">
               <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1558467778-122dbb038e3b?crop=entropy&cs=srgb&fm=jpg&q=85" 
-                  alt="About us"
+                  src="https://plus.unsplash.com/premium_photo-1762644220492-128b26914af1?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                  alt="Photo booth strips"
                   className="w-full h-full object-cover"
                 />
               </div>
