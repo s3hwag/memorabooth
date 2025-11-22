@@ -595,7 +595,10 @@ function App() {
               "https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/sj2xxxst_IMG_2543%202.jpg",
               "https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/g6ez0wmu_IMG_2544%202.jpg",
               "https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/cue8wou9_IMG_2553%202.jpg",
-              "https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/k1gromee_IMG_2554%202.jpg"
+              "https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/k1gromee_IMG_2554%202.jpg",
+              "https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/zsm8m3vj_IMG_2549%202.jpg",
+              "https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/kl7c5pfb_IMG_2551%202.jpg",
+              "https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/pq8ci1je_IMG_2552%202.jpg"
             ].map((img, idx) => (
               <div key={idx} className="aspect-square overflow-hidden rounded-2xl group cursor-pointer" data-testid={`gallery-img-${idx}`}>
                 <img 
