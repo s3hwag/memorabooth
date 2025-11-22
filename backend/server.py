@@ -93,21 +93,22 @@ class NewsletterSubscriptionCreate(BaseModel):
 async def send_booking_email(booking: BookingInquiry):
     """Send booking notification email"""
     try:
-        # Email configuration
-        sender_email = "noreply@memorabooth.com"
-        receiver_email = "sehwagvijay@memorabooth.com"
+        # Email configuration from environment variables
+        smtp_user = os.environ.get('SMTP_USER', 'admin@memorabooth.com')
+        smtp_password = os.environ.get('SMTP_PASSWORD', '')
+        receiver_email = os.environ.get('EMAIL_TO', 'admin@memorabooth.com')
         
         # Create message
         message = MIMEMultipart("alternative")
         message["Subject"] = f"New Booking Inquiry - {booking.booth_type}"
-        message["From"] = sender_email
+        message["From"] = smtp_user
         message["To"] = receiver_email
         
         # Create HTML content
         html_content = f"""
         <html>
             <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
-                <h2 style="color: #e91e63;">New Booking Inquiry</h2>
+                <h2 style="color: #e91e63;">New Booking Inquiry - MEMORABOOTH</h2>
                 <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px;">
                     <h3>Customer Details:</h3>
                     <p><strong>Name:</strong> {booking.name}</p>
@@ -134,16 +135,18 @@ async def send_booking_email(booking: BookingInquiry):
         html_part = MIMEText(html_content, "html")
         message.attach(html_part)
         
-        # Note: In production, you would use proper SMTP configuration
-        # For now, we'll log the email content
-        logger.info(f"Email notification would be sent for booking {booking.id}")
-        logger.info(f"To: {receiver_email}, Subject: {message['Subject']}")
-        
-        # In production environment, uncomment and configure SMTP:
-        # with smtplib.SMTP('smtp.gmail.com', 587) as server:
-        #     server.starttls()
-        #     server.login(sender_email, os.environ.get('EMAIL_PASSWORD'))
-        #     server.send_message(message)
+        # Send email via Gmail SMTP
+        if smtp_password:
+            try:
+                with smtplib.SMTP('smtp.gmail.com', 587) as server:
+                    server.starttls()
+                    server.login(smtp_user, smtp_password)
+                    server.send_message(message)
+                logger.info(f"✅ Booking email sent successfully to {receiver_email} for booking {booking.id}")
+            except Exception as smtp_error:
+                logger.error(f"❌ SMTP Error: {str(smtp_error)}")
+        else:
+            logger.warning("⚠️ SMTP_PASSWORD not configured, email not sent")
         
     except Exception as e:
         logger.error(f"Failed to send email notification: {str(e)}")
@@ -152,18 +155,20 @@ async def send_booking_email(booking: BookingInquiry):
 async def send_contact_email(contact: ContactMessage):
     """Send contact form notification email"""
     try:
-        sender_email = "noreply@memorabooth.com"
-        receiver_email = "sehwagvijay@memorabooth.com"
+        # Email configuration from environment variables
+        smtp_user = os.environ.get('SMTP_USER', 'admin@memorabooth.com')
+        smtp_password = os.environ.get('SMTP_PASSWORD', '')
+        receiver_email = os.environ.get('EMAIL_TO', 'admin@memorabooth.com')
         
         message = MIMEMultipart("alternative")
-        message["Subject"] = f"New Contact Message from {contact.name}"
-        message["From"] = sender_email
+        message["Subject"] = f"New Contact Message from {contact.name} - MEMORABOOTH"
+        message["From"] = smtp_user
         message["To"] = receiver_email
         
         html_content = f"""
         <html>
             <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
-                <h2 style="color: #e91e63;">New Contact Message</h2>
+                <h2 style="color: #e91e63;">New Contact Message - MEMORABOOTH</h2>
                 <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px;">
                     <p><strong>Name:</strong> {contact.name}</p>
                     <p><strong>Email:</strong> {contact.email}</p>
@@ -184,8 +189,18 @@ async def send_contact_email(contact: ContactMessage):
         html_part = MIMEText(html_content, "html")
         message.attach(html_part)
         
-        logger.info(f"Email notification would be sent for contact message {contact.id}")
-        logger.info(f"To: {receiver_email}, Subject: {message['Subject']}")
+        # Send email via Gmail SMTP
+        if smtp_password:
+            try:
+                with smtplib.SMTP('smtp.gmail.com', 587) as server:
+                    server.starttls()
+                    server.login(smtp_user, smtp_password)
+                    server.send_message(message)
+                logger.info(f"✅ Contact email sent successfully to {receiver_email} for message {contact.id}")
+            except Exception as smtp_error:
+                logger.error(f"❌ SMTP Error: {str(smtp_error)}")
+        else:
+            logger.warning("⚠️ SMTP_PASSWORD not configured, email not sent")
         
     except Exception as e:
         logger.error(f"Failed to send email notification: {str(e)}")
