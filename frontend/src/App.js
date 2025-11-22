@@ -420,10 +420,6 @@ function App() {
                     </div>
                     <div className="flex items-start gap-2">
                       <Sparkles className="w-5 h-5 text-pink-600 mt-0.5" />
-                      <span className="text-gray-700">Instant 2x6" or 4x6" prints</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <Sparkles className="w-5 h-5 text-pink-600 mt-0.5" />
                       <span className="text-gray-700">On-screen live preview</span>
                     </div>
                     <div className="flex items-start gap-2">
@@ -578,7 +574,7 @@ function App() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {[
-              "https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/sj2xxxst_IMG_2543%202.jpg",
+              "https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/z5gfmhog_IMG_2543%202.jpg",
               "https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/g6ez0wmu_IMG_2544%202.jpg",
               "https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/cue8wou9_IMG_2553%202.jpg",
               "https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/k1gromee_IMG_2554%202.jpg",
