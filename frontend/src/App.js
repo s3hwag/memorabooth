@@ -1151,8 +1151,8 @@ function App() {
                   <h3 className="font-bold text-xl text-gray-900 mb-3">Cancellation Policy</h3>
                   <ul className="list-disc pl-6 space-y-1">
                     <li><strong>42 hours before event:</strong> Full refund processed the same day</li>
-                    <li><strong>24 hours before event:</strong> 60% refund processed the same day</li>
-                    <li><strong>Less than 24 hours:</strong> No refund</li>
+                    <li><strong>24 hours before event:</strong> 50% refund processed the same day</li>
+                    <li><strong>Less than 24 hours:</strong> 25% refund</li>
                   </ul>
                 </div>
 
