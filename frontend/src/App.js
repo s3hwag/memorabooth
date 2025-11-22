@@ -239,8 +239,8 @@ function App() {
             <div className="relative">
               <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl">
                 <img 
-                  src="https://plus.unsplash.com/premium_photo-1762644220492-128b26914af1?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-                  alt="Photo booth strips"
+                  src="https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/1p0hfz7r_IMG_2555.jpg" 
+                  alt="Memorabooth experience"
                   className="w-full h-full object-cover"
                 />
               </div>
