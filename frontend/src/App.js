@@ -156,11 +156,11 @@ function App() {
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20" data-testid="hero-section">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1705237553502-a2ad4905bda2?crop=entropy&cs=srgb&fm=jpg&q=85" 
-            alt="Photo booth"
-            className="w-full h-full object-cover"
+            src="https://customer-assets.emergentagent.com/job_forever-photos-4/artifacts/ss76e5gt_Homepage.jpeg" 
+            alt="Photo booth memories"
+            className="w-full h-full object-cover grayscale"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-pink-100/90 via-purple-50/85 to-blue-50/90"></div>
+          <div className="absolute inset-0 bg-white/85"></div>
         </div>
         
         <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
