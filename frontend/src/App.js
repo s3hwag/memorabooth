@@ -517,7 +517,7 @@ function App() {
                   <div className="space-y-3 mb-6">
                     <div className="flex items-start gap-2">
                       <Clock className="w-5 h-5 text-blue-600 mt-0.5" />
-                      <span className="text-gray-700"><strong>24 hours</strong> of booth time</span>
+                      <span className="text-gray-700"> Upto <strong>12 hours</strong> of booth time</span>
                     </div>
                     <div className="flex items-start gap-2">
                       <Award className="w-5 h-5 text-blue-600 mt-0.5" />
