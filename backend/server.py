@@ -21,10 +21,8 @@ load_dotenv(ROOT_DIR / '.env')
 mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(
     mongo_url,
-    tls=True,
-    tlsAllowInvalidCertificates=True,
-    serverSelectionTimeoutMS=5000,
-    connectTimeoutMS=10000
+    serverSelectionTimeoutMS=30000,
+    connectTimeoutMS=30000
 )
 db = client[os.environ['DB_NAME']]
 
@@ -135,11 +133,10 @@ async def send_booking_email(booking: BookingInquiry):
         html_part = MIMEText(html_content, "html")
         message.attach(html_part)
         
-        # Send email via Gmail SMTP
+        # Send email via Gmail SMTP (using port 465 for SSL)
         if smtp_password:
             try:
-                with smtplib.SMTP('smtp.gmail.com', 587) as server:
-                    server.starttls()
+                with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
                     server.login(smtp_user, smtp_password)
                     server.send_message(message)
                 logger.info(f"✅ Booking email sent successfully to {receiver_email} for booking {booking.id}")
@@ -189,11 +186,10 @@ async def send_contact_email(contact: ContactMessage):
         html_part = MIMEText(html_content, "html")
         message.attach(html_part)
         
-        # Send email via Gmail SMTP
+        # Send email via Gmail SMTP (using port 465 for SSL)
         if smtp_password:
             try:
-                with smtplib.SMTP('smtp.gmail.com', 587) as server:
-                    server.starttls()
+                with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
                     server.login(smtp_user, smtp_password)
                     server.send_message(message)
                 logger.info(f"✅ Contact email sent successfully to {receiver_email} for message {contact.id}")
