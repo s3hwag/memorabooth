@@ -4,18 +4,20 @@ from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
+import asyncio
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict, EmailStr
 from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+import resend
 
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
+
+# Configure Resend
+resend.api_key = os.environ.get('RESEND_API_KEY')
 
 # MongoDB connection with SSL configuration
 mongo_url = os.environ['MONGO_URL']
@@ -89,18 +91,9 @@ class NewsletterSubscriptionCreate(BaseModel):
 
 # Email Sending Function
 async def send_booking_email(booking: BookingInquiry):
-    """Send booking notification email"""
+    """Send booking notification email via Resend"""
     try:
-        # Email configuration from environment variables
-        smtp_user = os.environ.get('SMTP_USER', 'admin@memorabooth.com')
-        smtp_password = os.environ.get('SMTP_PASSWORD', '')
-        receiver_email = os.environ.get('EMAIL_TO', 'admin@memorabooth.com')
-        
-        # Create message
-        message = MIMEMultipart("alternative")
-        message["Subject"] = f"New Booking Inquiry - {booking.booth_type}"
-        message["From"] = smtp_user
-        message["To"] = receiver_email
+        receiver_email = os.environ.get('EMAIL_TO', 'sehwagvijay@memorabooth.com')
         
         # Create HTML content
         html_content = f"""
@@ -129,38 +122,28 @@ async def send_booking_email(booking: BookingInquiry):
         </html>
         """
         
-        # Attach HTML content
-        html_part = MIMEText(html_content, "html")
-        message.attach(html_part)
+        # Send email via Resend
+        params = {
+            "from": "MEMORABOOTH <onboarding@resend.dev>",
+            "to": [receiver_email],
+            "subject": f"New Booking Inquiry - {booking.booth_type}",
+            "html": html_content
+        }
         
-        # Send email via Gmail SMTP (using port 465 for SSL)
-        if smtp_password:
-            try:
-                with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
-                    server.login(smtp_user, smtp_password)
-                    server.send_message(message)
-                logger.info(f"✅ Booking email sent successfully to {receiver_email} for booking {booking.id}")
-            except Exception as smtp_error:
-                logger.error(f"❌ SMTP Error: {str(smtp_error)}")
-        else:
-            logger.warning("⚠️ SMTP_PASSWORD not configured, email not sent")
+        try:
+            email_response = await asyncio.to_thread(resend.Emails.send, params)
+            logger.info(f"✅ Booking email sent successfully to {receiver_email} for booking {booking.id} (Email ID: {email_response.get('id')})")
+        except Exception as resend_error:
+            logger.error(f"❌ Resend Error: {str(resend_error)}")
         
     except Exception as e:
         logger.error(f"Failed to send email notification: {str(e)}")
 
 
 async def send_contact_email(contact: ContactMessage):
-    """Send contact form notification email"""
+    """Send contact form notification email via Resend"""
     try:
-        # Email configuration from environment variables
-        smtp_user = os.environ.get('SMTP_USER', 'admin@memorabooth.com')
-        smtp_password = os.environ.get('SMTP_PASSWORD', '')
-        receiver_email = os.environ.get('EMAIL_TO', 'admin@memorabooth.com')
-        
-        message = MIMEMultipart("alternative")
-        message["Subject"] = f"New Contact Message from {contact.name} - MEMORABOOTH"
-        message["From"] = smtp_user
-        message["To"] = receiver_email
+        receiver_email = os.environ.get('EMAIL_TO', 'sehwagvijay@memorabooth.com')
         
         html_content = f"""
         <html>
@@ -183,20 +166,19 @@ async def send_contact_email(contact: ContactMessage):
         </html>
         """
         
-        html_part = MIMEText(html_content, "html")
-        message.attach(html_part)
+        # Send email via Resend
+        params = {
+            "from": "MEMORABOOTH <onboarding@resend.dev>",
+            "to": [receiver_email],
+            "subject": f"New Contact Message from {contact.name} - MEMORABOOTH",
+            "html": html_content
+        }
         
-        # Send email via Gmail SMTP (using port 465 for SSL)
-        if smtp_password:
-            try:
-                with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
-                    server.login(smtp_user, smtp_password)
-                    server.send_message(message)
-                logger.info(f"✅ Contact email sent successfully to {receiver_email} for message {contact.id}")
-            except Exception as smtp_error:
-                logger.error(f"❌ SMTP Error: {str(smtp_error)}")
-        else:
-            logger.warning("⚠️ SMTP_PASSWORD not configured, email not sent")
+        try:
+            email_response = await asyncio.to_thread(resend.Emails.send, params)
+            logger.info(f"✅ Contact email sent successfully to {receiver_email} for message {contact.id} (Email ID: {email_response.get('id')})")
+        except Exception as resend_error:
+            logger.error(f"❌ Resend Error: {str(resend_error)}")
         
     except Exception as e:
         logger.error(f"Failed to send email notification: {str(e)}")
